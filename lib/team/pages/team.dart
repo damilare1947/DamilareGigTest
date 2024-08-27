@@ -51,7 +51,7 @@ class Team extends StatelessWidget {
                           title: Text(ctrl.user[i].name),
                           subtitle: Text(ctrl.user[i].username),
                           onTap: () {
-                            ctrl.setFloatingObject(ctrl.user[i].name);
+                            ctrl.setFloatingObject(ctrl.user[i].company.catchPhrase);
                             NavigationService().push(page: TeamDetails.path, arguments: {'userDetails': ctrl.user[i]});
                           },
                         );
