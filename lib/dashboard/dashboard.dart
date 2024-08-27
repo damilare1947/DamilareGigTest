@@ -43,7 +43,7 @@ class _DashboardState extends State<Dashboard> {
           page: Container(),
           icon: Obx(() => Icon(
                 Icons.home,
-                color: getSelectedItemColor(1).value,
+                color: getSelectedItemColor(0).value,
               )),
           iconLabel: 'Home'),
       BottomNavItem(
@@ -57,21 +57,21 @@ class _DashboardState extends State<Dashboard> {
           page: Team(),
           icon: Obx(() => Icon(
                 Icons.people,
-                color: getSelectedItemColor(1).value,
+                color: getSelectedItemColor(2).value,
               )),
           iconLabel: 'Team'),
       BottomNavItem(
           page: Container(),
           icon: Obx(() => Icon(
                 Icons.settings,
-                color: getSelectedItemColor(1).value,
+                color: getSelectedItemColor(3).value,
               )),
           iconLabel: 'Settings'),
       BottomNavItem(
           page: Container(),
           icon: Obx(() => Icon(
                 Icons.help,
-                color: getSelectedItemColor(1).value,
+                color: getSelectedItemColor(4).value,
               )),
           iconLabel: 'Help'),
     ];
