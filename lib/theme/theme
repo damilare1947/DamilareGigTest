@@ -1,0 +1,337 @@
+import 'package:bamifix/core/constants/app_colors.dart';
+import 'package:bamifix/core/controllers/theme_controller.dart';
+import 'package:bamifix/core/theme/app_button_extension.dart';
+import 'package:bamifix/core/theme/theme_extensions.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+
+ThemeData lightTheme(BuildContext context) {
+  final ctr = Get.find<ThemeController>();
+  Color mainColor = const Color(0xffFF0000);
+  Color accentColor = Colors.black;
+  Color black = AppColors.oil_11;
+  Color progressFilled = const Color(0xFFE6E6E6);
+  Color oil = const Color(0xFFABABAB);
+  Color colorpalette = ctr.colorPalette.value;
+
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+
+  return ThemeData(
+      useMaterial3: true,
+      primaryColor: mainColor,
+      fontFamily: 'NotoSans',
+      colorScheme: const ColorScheme.light(
+        secondary: Colors.purple,
+      ),
+      scaffoldBackgroundColor: AppColors.oil_02,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.yellow,
+        foregroundColor: Colors.black,
+        titleTextStyle: TextStyle(color: Colors.black),
+      ),
+      textTheme: TextTheme(
+        bodyLarge: TextStyle(color: black),
+        bodyMedium: TextStyle(color: black),
+        titleSmall: TextStyle(color: black),
+        displayLarge: TextStyle(color: black),
+        displayMedium: TextStyle(color: black),
+        displaySmall: TextStyle(color: black),
+        titleLarge: TextStyle(color: black),
+        labelLarge: TextStyle(color: black),
+      ),
+      radioTheme: RadioThemeData(
+          fillColor: MaterialStateProperty.resolveWith<Color?>(
+            (Set<MaterialState> states) {
+              if (states.contains(MaterialState.disabled)) {
+                return AppColors.sun_06;
+              }
+              if (states.contains(MaterialState.selected)) {
+                return AppColors.sun_06;
+              }
+              return AppColors.sun_06;
+            },
+          ),
+          overlayColor: MaterialStateProperty.all(AppColors.sun_06)),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: ButtonStyle(
+          minimumSize: MaterialStateProperty.all(const Size(100, 60)),
+          backgroundColor: MaterialStateProperty.resolveWith(
+            (Set<MaterialState> states) {
+              return Colors.transparent;
+            },
+          ),
+          side: MaterialStateProperty.resolveWith(
+            (Set<MaterialState> states) {
+              if (states.contains(MaterialState.disabled)) {
+                return const BorderSide(color: AppColors.oil_03, width: 2.0, style: BorderStyle.solid);
+              }
+              if (states.contains(MaterialState.hovered)) {
+                return const BorderSide(color: AppColors.oil_11, width: 1.0, style: BorderStyle.solid);
+              }
+              if (states.contains(MaterialState.selected)) {
+                return const BorderSide(color: AppColors.oil_11, width: 1.0, style: BorderStyle.solid);
+              }
+
+              return const BorderSide(color: AppColors.sun_06, width: 2.0, style: BorderStyle.solid);
+            },
+          ),
+          animationDuration: const Duration(milliseconds: 300),
+          overlayColor: MaterialStateProperty.all(AppColors.sun_05),
+          //change with your color
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          minimumSize: MaterialStateProperty.all(const Size(100, 60)),
+          backgroundColor: MaterialStateProperty.resolveWith(
+            (Set<MaterialState> states) {
+              if (states.contains(MaterialState.disabled)) {
+                return AppColors.oil_04;
+              }
+              if (states.contains(MaterialState.hovered)) {
+                return AppColors.sun_03;
+              }
+              if (states.contains(MaterialState.selected)) {
+                return AppColors.sun_06;
+              }
+
+              return AppColors.sun_06;
+            },
+          ),
+          animationDuration: const Duration(milliseconds: 300),
+          overlayColor: MaterialStateProperty.all(AppColors.sun_04),
+          //change with your color
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
+      ),
+      extensions: <ThemeExtension<dynamic>>[
+        AppThemeExtension(
+          mainColor: mainColor,
+          contrast: black,
+          boxShadow: const Color(0x4cc7c7c7),
+          dashboardBackground: Colors.white,
+          palette: colorpalette,
+          accentColor: accentColor,
+          textColor: black,
+          progressFilled: progressFilled,
+          oil: oil,
+          snackbarBackground: Colors.white,
+          tabBarBackground: Colors.white,
+          tabBarActive: AppColors.sun_06,
+          tabBarInactive: AppColors.oil_05,
+          enabledBorderColor: AppColors.oil_06,
+          labelTextColor: AppColors.oil_05,
+          labelWidgetColor: AppColors.oil_02,
+          stepperActiveFillColor: AppColors.sun_06,
+          stepperInactiveFillColor: AppColors.sun_12,
+          switchDefaultInactive: AppColors.storm_04,
+          switchDefaultActive: AppColors.sun_06,
+          switchHoverInactive: AppColors.storm_05,
+          switchHoverActive: AppColors.sun_03,
+          swithDisabledInactive: AppColors.storm_03,
+          swithDisabledActive: AppColors.sun_02,
+        ),
+        const AppButtonThemeExtension(
+          textButtonTextStyle: TextStyle(
+            color: AppColors.oil_11,
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+          ),
+          disabledTextButtonTextStyle: TextStyle(
+            color: AppColors.oil_04,
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+          ),
+          elevatedButtonTextStyle: TextStyle(
+            color: AppColors.oil_02,
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+          ),
+          disabledElevatedButtonTextStyle: TextStyle(
+            color: AppColors.btnLabelColor,
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+          ),
+          outlineButtonTextStyle: TextStyle(
+            color: AppColors.oil_11,
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+          ),
+          disabledOutlinedButtonTextStyle: TextStyle(
+            color: AppColors.oil_04,
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+          ),
+          radioBorderSideColor: AppColors.oil_06,
+          radioActiveSideColor: AppColors.sun_06,
+          paginationBgColor: AppColors.oil_03,
+          paginationTextColor: Colors.black,
+        )
+      ]);
+}
+
+ThemeData darkTheme(BuildContext context) {
+  Color mainColor = const Color(0xfff1c72f);
+  Color accentColor = Colors.white;
+  Color white = Colors.white.withOpacity(0.87);
+  Color progressFilled = const Color(0xFFFAFAFA);
+  Color oil = const Color(0xFFABABAB);
+  Color colorPalette = Colors.blue;
+
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+
+  return ThemeData(
+      primaryColor: mainColor,
+      colorScheme: const ColorScheme.dark().copyWith(
+        secondary: Colors.green,
+      ),
+      scaffoldBackgroundColor: AppColors.darkBg,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        titleTextStyle: TextStyle(color: Colors.white),
+      ),
+      textTheme: TextTheme(
+        bodyLarge: TextStyle(color: white),
+        bodyMedium: TextStyle(color: white),
+        titleSmall: TextStyle(color: white),
+        displayLarge: TextStyle(color: white),
+        displayMedium: TextStyle(color: white),
+        displaySmall: TextStyle(color: white),
+        titleLarge: TextStyle(color: white),
+      ),
+      textButtonTheme: const TextButtonThemeData(
+        style: ButtonStyle(),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+          style: ButtonStyle(
+              minimumSize: MaterialStateProperty.all(const Size(100, 60)),
+              backgroundColor: MaterialStateProperty.resolveWith(
+                (Set<MaterialState> states) {
+                  return AppColors.oil_11;
+                },
+              ),
+              side: MaterialStateProperty.resolveWith(
+                (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.disabled)) {
+                    return const BorderSide(color: AppColors.sky_02, width: 2.0, style: BorderStyle.solid);
+                  }
+                  if (states.contains(MaterialState.hovered)) {
+                    return const BorderSide(color: AppColors.sun_03, width: 2.0, style: BorderStyle.solid);
+                  }
+                  if (states.contains(MaterialState.selected)) {
+                    return const BorderSide(color: AppColors.sun_03, width: 2.0, style: BorderStyle.solid);
+                  }
+
+                  return const BorderSide(color: AppColors.sun_03, width: 2.0, style: BorderStyle.solid);
+                },
+              ),
+              animationDuration: const Duration(milliseconds: 300),
+              overlayColor: MaterialStateProperty.all(AppColors.sun_05),
+              //change with your color
+              shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              )))),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+            minimumSize: MaterialStateProperty.all(const Size(100, 60)),
+            backgroundColor: MaterialStateProperty.resolveWith(
+              (Set<MaterialState> states) {
+                if (states.contains(MaterialState.disabled)) {
+                  return AppColors.sky_01;
+                }
+                if (states.contains(MaterialState.hovered)) {
+                  return AppColors.sun_02;
+                }
+                if (states.contains(MaterialState.selected)) {
+                  return AppColors.sun_06;
+                }
+
+                return AppColors.sun_06;
+              },
+            ),
+            animationDuration: const Duration(milliseconds: 300),
+            overlayColor: MaterialStateProperty.all(AppColors.sun_05),
+            //change with your color
+            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ))),
+      ),
+      extensions: <ThemeExtension<dynamic>>[
+        AppThemeExtension(
+          mainColor: mainColor,
+          boxShadow: const Color(0x4B3E2E2E),
+          contrast: const Color(0xDFFFFFFF),
+          dashboardBackground: const Color(0xFF0F0F0F),
+          palette: colorPalette,
+          accentColor: accentColor,
+          textColor: white,
+          progressFilled: progressFilled,
+          oil: oil,
+          snackbarBackground: const Color(0xFF25282E),
+          tabBarBackground: const Color(0xFF272727),
+          tabBarActive: AppColors.sun_04,
+          tabBarInactive: AppColors.oil_05,
+          enabledBorderColor: AppColors.oil_06,
+          labelTextColor: AppColors.oil_03,
+          labelWidgetColor: AppColors.oil_02,
+          stepperActiveFillColor: AppColors.sun_04,
+          stepperInactiveFillColor: AppColors.sun_01,
+          switchDefaultInactive: AppColors.oil_03,
+          switchDefaultActive: AppColors.sun_04,
+          switchHoverInactive: AppColors.storm_06,
+          switchHoverActive: AppColors.sun_02,
+          swithDisabledInactive: AppColors.storm_09,
+          swithDisabledActive: AppColors.oil_04,
+        ),
+        AppButtonThemeExtension(
+          elevatedButtonTextStyle: const TextStyle(
+            color: AppColors.oil_11,
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+          ),
+          disabledElevatedButtonTextStyle: const TextStyle(
+            color: AppColors.btnLabelColor,
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+          ),
+          outlineButtonTextStyle: const TextStyle(
+            color: AppColors.sun_03,
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+          ),
+          disabledOutlinedButtonTextStyle: const TextStyle(
+            color: AppColors.sky_02,
+            fontSize: 14,
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w700,
+          ),
+          textButtonTextStyle: const TextStyle(
+            color: AppColors.sun_06,
+            fontSize: 14,
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w700,
+          ),
+          disabledTextButtonTextStyle: const TextStyle(
+            color: AppColors.sky_02,
+            fontSize: 14,
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w700,
+          ),
+          radioBorderSideColor: AppColors.sun_01,
+          radioActiveSideColor: AppColors.sun_04,
+          paginationBgColor: const Color(0x1E1D3262).withOpacity(0.2),
+          paginationTextColor: Colors.white,
+        )
+      ]);
+}
